@@ -1,11 +1,22 @@
 {
-  "name": "ucvdeportes-backend",
-  "version": "0.0.0",
-  "private": true,
+  "name": "ucvdeportes_backend",
+  "version": "1.0.0",
+  "main": "app.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
-    "express": "^5.1.0"
+    "@types/sequelize": "^4.28.20",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "morgan": "^1.10.0",
+    "pg": "^8.16.0",
+    "sequelize": "^6.37.7",
+    "typescript": "^5.8.3"
   }
 }
