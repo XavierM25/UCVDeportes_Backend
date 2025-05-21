@@ -3,12 +3,14 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import sequelize from './database'; 
+//import proveedoresRoutes from '../routes/proveedoresRoutes';
 
 class Server {
     private app: Application;
     private port: string;
     
     private apiPaths = {
+      //proveedores: '/proveedores',
       
     };
   
@@ -30,7 +32,11 @@ class Server {
   }
 
   private routes() {
-    
+    //this.app.use(this.apiPaths.proveedores, proveedoresRoutes);
+  this.app.get('/api/ping', (req, res) => {
+    console.log("✅ Frontend hizo ping al backend");
+    res.json({ message: "Backend activo y respondiendo" });
+  });
   }
 
   private async databaseConnection() {
