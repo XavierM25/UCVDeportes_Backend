@@ -17,9 +17,12 @@ const cors_1 = __importDefault(require("cors"));
 const helmet_1 = __importDefault(require("helmet"));
 const morgan_1 = __importDefault(require("morgan"));
 const database_1 = __importDefault(require("./database"));
+//import proveedoresRoutes from '../routes/proveedoresRoutes';
 class Server {
     constructor() {
-        this.apiPaths = {};
+        this.apiPaths = {
+        //proveedores: '/proveedores',
+        };
         this.app = (0, express_1.default)();
         this.port = process.env.PORT || '3000';
         this.middlewares();
@@ -33,6 +36,11 @@ class Server {
         this.app.use((0, morgan_1.default)("tiny"));
     }
     routes() {
+        //this.app.use(this.apiPaths.proveedores, proveedoresRoutes);
+        this.app.get('/api/ping', (req, res) => {
+            console.log("✅ Frontend hizo ping al backend");
+            res.json({ message: "Backend activo y respondiendo" });
+        });
     }
     databaseConnection() {
         return __awaiter(this, void 0, void 0, function* () {
