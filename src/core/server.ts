@@ -3,16 +3,16 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import sequelize from './database';
-import authRoutes from '../routes/auth.routes';
-//import proveedoresRoutes from '../routes/proveedoresRoutes';
+import Sesion from '../routes/Sesion';
+import Profile from '../routes/Profile';
 
 class Server {
   private app: Application;
   private port: string;
 
   private apiPaths = {
-    auth: '/api/auth',
-    //proveedores: '/proveedores',
+    sesion: '/sesion',
+    profile: '/profile',
 
   };
 
@@ -34,12 +34,8 @@ class Server {
   }
 
   private routes() {
-    this.app.use(this.apiPaths.auth, authRoutes);
-    //this.app.use(this.apiPaths.proveedores, proveedoresRoutes);
-    this.app.get('/api/ping', (req, res) => {
-      console.log("✅ Frontend hizo ping al backend");
-      res.json({ message: "Backend activo y respondiendo" });
-    });
+    this.app.use(this.apiPaths.sesion, Sesion);
+    this.app.use(this.apiPaths.profile, Profile);    
   }
 
   private async databaseConnection() {

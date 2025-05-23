@@ -1,7 +1,7 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelize from "../core/database";
 import { RankingAttributes } from "../interface/Rankings";
-import Estudiante from "./Estudiante";
+import Usuario from "./Usuario";
 import Categoria from "./Categoria";
 
 type RankingCreation = Optional<RankingAttributes, "id_ranking">;
@@ -15,10 +15,10 @@ Ranking.init(
       autoIncrement: true,
       primaryKey: true,
     },
-    id_estudiante: {
+    id_usuario: {
       type: DataTypes.BIGINT,
       allowNull: false,
-      references: { model: Estudiante, key: "id_estudiante" },
+      references: { model: Usuario, key: "id_usuario" },
       onUpdate: "CASCADE",
       onDelete: "RESTRICT",
     },
@@ -47,7 +47,7 @@ Ranking.init(
   }
 );
 
-Ranking.belongsTo(Estudiante, { foreignKey: "id_estudiante", as: "estudiante" });
+Ranking.belongsTo(Usuario, { foreignKey: "id_usuario", as: "usuario" });
 Ranking.belongsTo(Categoria, { foreignKey: "categoria_id", as: "categoria" });
 
 export default Ranking;

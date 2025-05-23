@@ -38,6 +38,7 @@ Usuario.init(
     estado: {
       type: DataTypes.ENUM("activo", "inactivo", "pendiente"),
       allowNull: false,
+      defaultValue: "pendiente",
     },
     fecha_registro: {
       type: DataTypes.DATE,
@@ -47,6 +48,27 @@ Usuario.init(
     rol: {
       type: DataTypes.ENUM("estudiante", "administrador", "docente"),
       allowNull: false,
+      defaultValue: "estudiante",
+    },
+    fecha_nacimiento: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    carrera: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    campus: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    celular: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+    ruta_imagen: {
+      type: DataTypes.TEXT,
+      allowNull: true,
     },
   },
   {
