@@ -5,6 +5,8 @@ import morgan from 'morgan';
 import sequelize from './database';
 import Sesion from '../routes/Sesion';
 import Profile from '../routes/Profile';
+import Ranking from '../routes/Ranking';
+import Categoria from '../routes/Categorias';
 
 class Server {
   private app: Application;
@@ -13,6 +15,8 @@ class Server {
   private apiPaths = {
     sesion: '/sesion',
     profile: '/profile',
+    ranking: '/ranking',
+    categoria: '/categoria',
 
   };
 
@@ -35,7 +39,9 @@ class Server {
 
   private routes() {
     this.app.use(this.apiPaths.sesion, Sesion);
-    this.app.use(this.apiPaths.profile, Profile);    
+    this.app.use(this.apiPaths.profile, Profile);  
+    this.app.use(this.apiPaths.ranking, Ranking); 
+    this.app.use(this.apiPaths.categoria, Categoria); 
   }
 
   private async databaseConnection() {
